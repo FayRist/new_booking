@@ -1,0 +1,35 @@
+.panel-body {
+    padding: 15px;
+  }
+
+  .row{
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  span.text-red{
+    color: #e03b35;
+  }
+
+  label.icon-circle{
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    background: #fff;
+    color: #666;
+    text-align: center;
+  }
+
+  label.icon-circle:hover{
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    // background: #fff;
+    color: #666;
+    text-align: center;
+  }
+

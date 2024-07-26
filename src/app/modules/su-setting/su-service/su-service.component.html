@@ -1,0 +1,170 @@
+<div class="card-body py-3">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 col-lg-8 card">
+      <div class="text-box-heading clearfix text-center card-head">
+        <img src="https://app.horganice.in.th/images/icon/roomrate-setting-black.png" width="40px">
+        <span>รายการบริการ </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex">
+    <div class="text-box-content clearfix">
+      <!-- Services -->
+      <div class="heading clearfix">
+        <h2>ค่าบริการ</h2>
+      </div>
+      <div class="content clearfix ">
+        <div class="col-xs-6 col-sm-5ths text-center card" style="cursor:pointer">
+          <div class="roomrate-div-inner-empty card-head" (click)="openBackDropDetail(contentDetail, null, 'add')">
+            <!---->
+            <div class="text-middle" style="bottom:30%">
+              <i class="fa fa-plus fa-2x"></i><br>เพิ่มข้อมูล
+            </div>
+            <!---->
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-5ths text-center" (click)="openBackDropDetail(contentDetail, service, 'edit')"
+          *ngFor="let service of items" style="cursor:pointer">
+          <div class="roomrate-div-inner ">
+
+            <img class="room-transfer" src="https://app.horganice.in.th/images/service/service.png" alt="img room">
+            <div class="text-bottom hidden-xs text-center">
+              <span> {{ service.serviceName }} </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex">
+    <div class="text-box-content clearfix">
+      <!-- Services -->
+      <div class="heading clearfix">
+        <h2>ค่าอาหาร</h2>
+      </div>
+      <div class="content clearfix ">
+        <div class="col-xs-6 col-sm-5ths text-center" style="cursor:pointer">
+          <div class="roomrate-div-inner-empty" (click)="openBackDropFood(contentFood, null, 'add')">
+            <!---->
+            <div class="text-middle" style="bottom:30%">
+              <i class="fa fa-plus fa-2x"></i><br>เพิ่มข้อมูล
+            </div>
+            <!---->
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-5ths text-center" (click)="openBackDropFood(contentFood, food, 'edit')"
+          *ngFor="let food of itemsFood" style="cursor:pointer">
+          <div class="roomrate-div-inner ">
+
+            <img class="room-transfer" src="./assets/media/misc/food.png" alt="img room">
+            <div class="text-bottom hidden-xs text-center">
+              <span> {{ food.serviceName }} </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <ng-template #contentDetail let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">รายละเอียด บริการ</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="tableDetailService">
+        <table class="table table-bordered text-center">
+          <tbody>
+            <tr>
+              <td>ชื่อบริการ</td>
+              <td>
+                <input type="text" class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+                  placeholder="ชื่อบริการ" formControlName="serviceName">
+              </td>
+            </tr>
+            <tr>
+              <td>จำนวนการให้ริการ</td>
+              <td>
+                <input name="apartmentId" ng-model="apartmentFormData.name" type="number"
+                  class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+                  formControlName="servicePrice">
+              </td>
+            </tr>
+            <tr>
+              <td>ราคาค่าบริการ</td>
+              <td>
+                <input name="apartmentId" ng-model="apartmentFormData.name" type="number"
+                  class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+                  formControlName="serviceAmount">
+              </td>
+            </tr>
+            <tr>
+              <td> การจอง </td>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="reserve" value="0"
+                    formControlName="reserve" checked>
+                  <label class="form-check-label" for="exampleRadios1">
+                    ลูกค้าสามารถจองได้
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="reserve" value="1"
+                    formControlName="reserve">
+                  <label class="form-check-label" for="exampleRadios2">
+                    เป็นของส่วนกลาง
+                  </label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="button" class="btn btn-outline-dark" (click)="addServiceDetail()">Save</button>
+    </div>
+  </ng-template>
+
+  <ng-template #contentFood let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">รายละเอียด อาหาร</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="tableDetailFood">
+        <table class="table table-bordered text-center">
+          <tbody>
+            <tr>
+              <td>ชื่อเมนูอาหาร</td>
+              <td>
+                <input type="text" class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+                  placeholder="ชื่อเมนูอาหาร" formControlName="serviceName">
+              </td>
+            </tr>
+            <tr>
+              <td>ราคาค่าบริการ</td>
+              <td>
+                <input name="apartmentId" type="number"
+                  class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+                  placeholder="ราคาค่าบริการ" formControlName="servicePrice">
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="button" class="btn btn-outline-dark" (click)="addServiceFood()">Save</button>
+    </div>
+  </ng-template>

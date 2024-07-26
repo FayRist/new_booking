@@ -1,0 +1,300 @@
+<!-- <p>calendar-room works!</p> -->
+<div class="container mb-lg-5" style="width: 90vw;">
+  <div class="card-body py-3">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-6 card">
+        <form>
+          <div class="row row-menu">
+            <div class="col-md-4">
+              <div class="clearfix">
+                <div class="card-body">
+                  <label>ค้นหาห้องว่าง <span class="text-red">*</span></label>
+                  <select class="form-control ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched"
+                    ng-model="filter.roomType">
+                    <option value="all" selected="selected">ห้องทั้งหมด</option>
+                    <option value="vacant">ห้องว่าง</option>
+                    <!---->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-end">
+              <div class="clearfix">
+                <div class="card-body">
+                  <button class="btn btn-primary" (click)="openBookingRoom(contentBookingRoom)">
+                    จองห้อง
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fullscreen">
+  <sidebar-container #sidebar [(expanded)]="expanded">
+    <sidebar-expanded>
+      <!-- <label class="row"
+        ><input
+          type="checkbox"
+          [(ngModel)]="navigatorConfig.freeHandSelectionEnabled"
+        />
+        Free-hand range</label
+      >
+      <label class="row"
+        ><input type="checkbox" (change)="changeAutoCellWidth($event)" />
+        Auto cell width</label
+      > -->
+      <div style="padding: 3px;">
+        <daypilot-navigator [config]="navigatorConfig" [date]="navigatorDate" (dateChange)="dateChange()" #navigator>
+        </daypilot-navigator>
+      </div>
+    </sidebar-expanded>
+    <sidebar-collapsed></sidebar-collapsed>
+    <sidebar-main>
+      <div class="main-body">
+        <daypilot-scheduler [config]="config" [events]="events" (viewChange)="viewChange()" #scheduler
+          (click)="clickBooking(events, $event, contentAddServiceInRoom)">
+        </daypilot-scheduler>
+        <div class="main-bottom"></div>
+      </div>
+    </sidebar-main>
+  </sidebar-container>
+</div>
+
+<ng-template #contentBookingRoom let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">การจองห้อง</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row col-4">
+    </div>
+
+    <form [formGroup]="booking_room">
+      <div class="container">
+        <div class="row">
+          <div class="col-6 form-div">
+            <label for="">ชื่อผู้จอง<span class="text-red">*</span></label>
+            <b>
+              <input name="bookingFirstName" type="text"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+                formControlName="bookingFirstName" required="">
+            </b>
+          </div>
+          <div class="col-6 form-div">
+            <label for="">นามสกุลผู้จอง<span class="text-red">*</span></label>
+            <b>
+              <input name="bookingLastName" type="text"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+                formControlName="bookingLastName" required="">
+            </b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 form-div">
+            <label for="">ห้องที่เข้าพัก<span class="text-red">*</span></label>
+            <b>
+              <select class="form-control ng-empty ng-dirty ng-valid-parse ng-invalid ng-invalid-required ng-touched"
+                formControlName="bookingIdRoom" required="">
+                <option value="" disabled="" selected="selected">เลือกห้องพัก</option>
+                <option *ngFor="let room of listRoom" [value]="room.idr" class="d-flex justify-content-between">
+                  ชื่อห้อง : {{ room.roomName }} ราคา :
+                  <ng-container *ngIf="room.pricePerDay === null">0</ng-container>
+                  <ng-container *ngIf="room.pricePerDay !== null">{{ room.pricePerDay }}</ng-container>
+                </option>
+              </select>
+            </b>
+          </div>
+          <div class="col-6 form-div">
+            <label for="">จำนวนผู้เข้าพัก<span class="text-red">*</span></label>
+            <b>
+              <input name="bookingAmountPeple" ng-model="apartmentFormData.name" type="text"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+                formControlName="bookingAmountPeple" required="">
+            </b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6" style="padding-bottom:15px">
+            <label>วันที่ Check In <span class="text-red">*</span></label>
+            <div id="timepicker_booking_end">
+              <div class="w-100 d-inline-flex">
+                <input [owlDateTime]="picker1" class="form-control" placeholder="วันที่ Check In"
+                  formControlName="bookingCheckIn" />
+                <owl-date-time #picker1></owl-date-time>
+                <mat-datepicker-toggle matIconSuffix [owlDateTimeTrigger]="picker1"></mat-datepicker-toggle>
+                <p></p>
+              </div>
+            </div>
+            <!-- <input name="address" type="text"
+              class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+              formControlName="address" placeholder="บ้านเลขที่/ หมู่/ ซอย/ ถนน" required=""> -->
+          </div>
+          <div class="col-6" style="padding-bottom:15px">
+            <label>วันที่ Check out <span class="text-red">*</span></label>
+            <div id="timepicker_booking_end">
+              <div class="w-100 d-inline-flex">
+                <input [owlDateTime]="picker2" class="form-control" placeholder="วันที่ Check out"
+                  formControlName="bookingCheckOut" />
+                <owl-date-time #picker2></owl-date-time>
+                <mat-datepicker-toggle matIconSuffix [owlDateTimeTrigger]="picker2"></mat-datepicker-toggle>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 form-div">
+            <label for="">กำหนดราคาห้องพัก<span class="text-red">*</span></label>
+            <br>
+            <b>
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" [value]="priceType"
+                  (change)="changePrice('pd')" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btnradio1">ราคาปกติ</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" [value]="priceType"
+                  (change)="changePrice('hd')" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3">ราคาช่วงวันหยุด</label>
+              </div>
+            </b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 form-div d-flex justify-content-end">
+            <button class="btn btn-primary" (click)="openAddServiceInRoom(contentAddServiceInRoom, 'none', null)">
+              จองบริการ
+            </button>
+            <!-- <label for="">บริการเสริม<span class="text-red">*</span></label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="reserve" value="0" checked
+                (change)="changeValue($event, contentAddServiceInRoom)">
+              <label class="form-check-label" for="exampleRadios1">
+                ไม่จองบริการ
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="reserve" value="1"
+                (change)="changeValue($event, contentAddServiceInRoom)">
+              <label class="form-check-label" for="exampleRadios2">
+                จองบริการ
+              </label>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">ปิดหน้าต่าง</button>
+    <button type="button" class="btn btn-outline-dark" (click)="addBooking()">บันทึก</button>
+  </div>
+</ng-template>
+
+<ng-template #contentAddServiceInRoom let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">การจองบริการ</h4>
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row mb-5" >
+      <div class=" col-2 " style="display: flex; justify-content: start;">
+        <button type="button" class=" btn btn-red btn-xs" (click)="cancelBooking(contentCancelBooking)"
+        *ngIf="idBooking !== null">ยกเลิกการจอง</button>
+      </div>
+      <div class=" col-2 " style="display: flex; justify-content: end;">
+        <button type="button" class=" btn btn-green btn-xs me-5" (click)="addFood()">
+          <i class="fa fa-plus"></i> เพิ่มรายการอาหาร
+        </button>
+        <button type="button" class=" btn btn-green btn-xs" (click)="addService()">
+          <i class="fa fa-plus"></i> เพิ่มบริการ
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr class="text-left">
+
+            <th>
+              ชื่อรายการ
+            </th>
+            <th>
+              จำนวน
+            </th>
+            <th>
+              ราคา
+            </th>
+            <th style="width: 70px;">
+              #
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ItemService of listService; let i = index;">
+            <td>
+              <select class="form-control ng-empty ng-dirty ng-valid-parse ng-invalid ng-invalid-required ng-touched"
+                [(ngModel)]="ItemService.serviceName" *ngIf="ItemService.serviceType === 'service'" required="">
+                <option value="" disabled="" selected="selected">เลือกบริการ</option>
+                <option *ngFor="let item of listSevice" [value]="item.serviceName">
+                  {{ item.serviceName }}
+                </option>
+              </select>
+              <select class="form-control ng-empty ng-dirty ng-valid-parse ng-invalid ng-invalid-required ng-touched"
+                [(ngModel)]="ItemService.serviceName" *ngIf="ItemService.serviceType === 'food'" required="">
+                <option value="" disabled="" selected="selected">เลือกบริการ</option>
+                <option *ngFor="let item of listFood" [value]="item.serviceName">
+                  {{ item.serviceName }}
+                </option>
+              </select>
+            </td>
+            <td>
+              <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text"
+                [(ngModel)]="ItemService.serviceAmount" placeholder="จำนวนชุด" >
+            </td>
+            <td>
+              <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text"
+                [(ngModel)]="ItemService.servicePrice" placeholder="ราคา" >
+            </td>
+            <td>
+              <button type="button" class=" btn btn-red btn-xxs"
+                (click)="removeService(ItemService.id, ItemService.seq)">
+                <i class="fa fa-trash"></i>
+              </button>
+              <!-- <input name="apartmentId" type="number" [(ngModel)]="ItemService.priceAsset"
+                  class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+                  placeholder="ค่าปรับ" required="" (change)="updateAsset(ItemService)"> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">ปิดหน้าต่าง</button>
+    <button type="button" class="btn btn-outline-dark" (click)="saveService()"
+      *ngIf="idBooking !== null">บันทึก</button>
+  </div>
+</ng-template>
+
+<ng-template #contentCancelBooking let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">ต้องการยกเลิกการจองห้องหรือไม่?</h4>
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <!-- <div class="modal-body">
+
+  </div> -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">ปิดหน้าต่าง</button>
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">ตกลง</button>
+  </div>
+</ng-template>

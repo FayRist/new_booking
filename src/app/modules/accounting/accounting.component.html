@@ -1,0 +1,51 @@
+<!-- <router-outlet></router-outlet> -->
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5 d-flex justify-content-between">
+  <div class="d-flex overflow-auto h-55px">
+    <ul
+      class="
+        nav nav-stretch nav-line-tabs nav-line-tabs-2x
+        border-transparent
+        fs-5
+        fw-bolder
+        flex-nowrap
+      "
+    >
+      <li class="nav-item">
+        <a
+          class="nav-link text-active-primary me-6"
+          routerLink="/accounting/day"
+          routerLinkActive="active"
+        >
+          วัน
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-active-primary me-6"
+          routerLink="/accounting/month"
+          routerLinkActive="active"
+        >
+          เดือน
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-active-primary me-6"
+          routerLink="/accounting/year"
+          routerLinkActive="active"
+        >
+          ปี
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-toolbar">
+    <a href="#" routerLink="/accounting/detail" class="btn btn-sm btn-light-primary">
+      <span [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'" class="svg-icon svg-icon-3"></span>
+      เพิ่มรายการ
+    </a>
+  </div>
+</div>
+<!-- end::Header -->
+<router-outlet></router-outlet>

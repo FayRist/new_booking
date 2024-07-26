@@ -1,0 +1,85 @@
+<div class="card-body py-3">
+  <div class="row d-flex">
+    <div class="col text-center">
+      <h1>ข้อมูลโรงแรม</h1>
+    </div>
+  </div>
+
+  <form [formGroup]="place">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 form-div">
+          <label for="">ชื่อโรงแรม <span class="text-red">*</span></label>
+          <b>
+            <input name="apartmentName" ng-model="apartmentFormData.name" type="text"
+              class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+              formControlName="apartmentName" required="">
+          </b>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8" style="padding-bottom:15px">
+          <label>ที่อยู่โรงแรม <span class="text-red">*</span></label>
+          <input name="address" type="text"
+            class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+            formControlName="address" placeholder="บ้านเลขที่/ หมู่/ ซอย/ ถนน" required="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 col-md-2" style="padding-bottom:15px">
+          <div class="form-group">
+            <label>จังหวัด <span class="text-red">*</span></label>
+            <select formControlName="province" class="form-control" (change)="changeProvince($event)">
+              <option *ngFor="let prov of province" [value]="prov.id">{{prov.name_th}}</option>
+            </select>
+          </div>
+          <!-- <input name="province" type="text"
+            class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+            formControlName="province" placeholder="จังหวัด" required=""> -->
+        </div>
+        <div class="col-3 col-md-2" style="padding-bottom:15px">
+          <label>อำเภอ <span class="text-red">*</span></label>
+          <select formControlName="district" class="form-control" (change)="changeAmp($event)">
+            <option *ngFor="let amp of amphure" [value]="amp.id">{{amp.name_th}}</option>
+          </select>
+          <!-- <input name="district" type="text"
+            class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+            formControlName="district" placeholder="อำเภอ" required=""> -->
+        </div>
+        <div class="col-3 col-md-2" style="padding-bottom:15px">
+          <label>ตำบล <span class="text-red">*</span></label>
+          <select formControlName="subdistrict" class="form-control" (change)="changeTum($event)">
+            <option *ngFor="let tum of tambon" [value]="tum.id">{{tum.name_th}}</option>
+          </select>
+          <!-- <input name="subdistrict" type="text"
+            class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+            formControlName="subdistrict" placeholder="ตำบล" required=""> -->
+        </div>
+        <div class="col-3 col-md-2" style="padding-bottom:15px">
+          <label>รหัสไปรษณีย์ <span class="text-red">*</span></label>
+          <input name="zipcode" ng-minlength="5" type="text" numbers-only=""
+            class="form-control ng-pristine ng-untouched ng-valid-minlength ng-valid-maxlength ng-not-empty ng-valid ng-valid-required"
+            formControlName="zipcode" placeholder="รหัสไปรษณีย์" required="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-8 form-div">
+          <label>อีเมลติดต่อโรงแรม</label>
+          <small class="pull-right text-blue"><i class="fa fa-info-circle"></i> ตัวอย่าง.
+            exmaple@exmaple.com</small>
+          <b><input name="email" type="email" placeholder="รหัสไปรษณีย์" formControlName="email"
+              pattern="^[A-Z0-9a-z\._%±]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,4}$"
+              class="form-control ng-pristine ng-untouched ng-valid ng-valid-email ng-valid-pattern ng-not-empty"
+              placeholder=""></b>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-4 text-center">
+        <button (click)="onSubmit()" type="button" class="btn btn-success w-50">บันทึก</button>
+      </div>
+    </div>
+  </div>
+</div>

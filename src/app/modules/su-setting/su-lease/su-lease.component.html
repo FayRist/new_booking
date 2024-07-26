@@ -1,0 +1,51 @@
+<div class="card-body py-3">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 col-lg-8">
+      <div class="text-box-heading clearfix text-center">
+        <img src="https://app.horganice.in.th/images/icon/roomrate-setting-black.png" width="40px"><span> กำหนดค่าห้อง</span>
+        <!-- <button class="btn btn-blue btn-pull-right ng-hide" ng-click="changeMode()" ng-hide="selectMode">
+          เลือกหลายห้อง</button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex">
+    <div class="col-xs-12" ng-repeat="(floor,rooms) in apartmentRoomsByFloorKey">
+      <div class="text-box-content clearfix" style="border-color:#CCCCCC">
+        <div class="d-flex justify-content-between">
+          <h4>
+            ชั้นที่ 1
+          </h4>
+          <!-- <div class="pull-right">
+
+            <button ng-if="selectMode" ng-click="selectFloor(floor)" type="button"
+              class=" btn btn-green btn-xs">เลือกทั้งชั้น</button>
+            <button ng-if="selectMode" ng-click="deselectFloor(floor)" type="button"
+              class=" btn btn-red btn-xs">ไม่เลือก</button>
+
+          </div> -->
+        </div>
+
+        <div class="content clearfix">
+          <!-- Rooms -->
+          <div class="constant row">
+
+            <div class="col-md-6 col-sm-5ths mt-5" *ngFor="let item of items | paginate: { itemsPerPage: mobile, currentPage: p }">
+              <div class="roomrate-div-inner ">
+                <img class="room-transfer" src="https://app.horganice.in.th/images/apartment_create/set-rent-cost.png"
+                  alt="img room">
+                <div class="text-bottom hidden-xs text-center">
+                  <span class="text-title-price">3500 บาท/เดือน</span>
+                  <br>
+                  <span class="text-title-price">350 บาท/วัน</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Rooms -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

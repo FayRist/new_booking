@@ -1,0 +1,249 @@
+[
+  {
+    "id": "1",
+    "seqF": 10529,
+    "floorName": "A",
+    "expanded": true,
+    "listRoom": [
+      {
+        "idr": "ZeaJGtN2wLeumjNbkQ0U",
+        "roomName": "A1",
+        "roomPeople": 3,
+        "roomSubBed": 0,
+        "roomType": "rt2",
+        "roomView": "rv1",
+        "seqR": 5423,
+        "listService": [
+          {
+            "id": 1,
+            "nameService": "Ex. เตาปิ้ง"
+          }
+        ],
+        "listAsset":[
+          {
+            "id": "1",
+            "nameAsset": "Ex. เตาปิ้ง"
+          }
+        ],
+        "listFee":[
+          {
+            "id":"1",
+            "priceFee":500,
+            "remarkFee":"Ex. ประตูเสีย",
+            "amountFee":1
+          },
+          {
+            "id":"2",
+            "priceFee":1500,
+            "remarkFee":"Ex. หน้าต่าง",
+            "amountFee": 5
+          }
+        ],
+        "pricePerDay": "2500",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900"
+      },
+      {
+        "idr": "kedpteW1kPgd7HeN2pWW",
+        "roomName": "A2",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 5877,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900"
+      },
+      {
+        "idr": "w4235rsdf5r4",
+        "roomName": "A3",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 258,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900"
+      },
+      {
+        "idr": "ewrt4erwqt35fedgsdfgwer",
+        "roomName": "A4",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 975,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900"
+      },
+      {
+        "idr": "15",
+        "roomName": "A5",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 4657,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "seqF": 9876,
+    "floorName": "B",
+    "expanded": true,
+    "listRoom": [
+      {
+        "idr": "fsdg345dfsg",
+        "roomName": "B1",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 3697,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900"
+      },
+      {
+        "idr": "sdfgfasd2332sdaf4",
+        "roomName": "B2",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 4211,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900",
+        "listFee":[
+          {
+            "id":"1",
+            "priceFee": 320,
+            "remarkFee":"Ex. ประตูเสีย",
+            "amountFee": 3
+          }
+        ]
+      },
+      {
+        "idr": "jhgfcv34",
+        "roomName": "B3",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 756,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900",
+        "listAsset":[
+          {
+            "id": "1",
+            "nameAsset": "Ex. เตาปิ้ง"
+          }
+        ]
+      },
+      {
+        "idr": "bvcsretrfg42f",
+        "roomName": "B4",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 3552,
+        "pricePerDay": "2300",
+        "pricePerHoilday": "3500",
+        "priceDeposit": "900"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "seqF": 5587,
+    "floorName": "C",
+    "expanded": true,
+    "listRoom": [
+      {
+        "idr": "sdgvb324ewdr",
+        "roomName": "C1",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 7841,
+        "listAsset":[
+          {
+            "id": "1",
+            "nameAsset": "Ex. เตาปิ้ง"
+          }
+        ]
+      },
+      {
+        "idr": "wqt2314tret",
+        "roomName": "C2",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 7841,
+        "listAsset":[
+          {
+            "id": "1",
+            "nameAsset": "Ex. เตาปิ้ง"
+          }
+        ]
+      },
+      {
+        "idr": "vwbertfdsgsfdg3",
+        "roomName": "C3",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 7841,
+        "listAsset":[
+          {
+            "id": "1",
+            "nameAsset": "Ex. เตาปิ้ง"
+          }
+        ]
+      },
+      {
+        "idr": "hjghuty324",
+        "roomName": "C4",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 7841,
+        "listAsset":[
+          {
+            "id": "1",
+            "nameAsset": "Ex. เตาปิ้ง"
+          }
+        ]
+      },
+      {
+        "idr": "fdghn435",
+        "roomName": "C5",
+        "roomPeople": "",
+        "roomSubBed": "",
+        "roomType": "",
+        "roomView": "",
+        "seqR": 7841,
+        "listAsset":[
+          {
+            "id": "1",
+            "nameAsset": "Ex. เตาปิ้ง"
+          }
+        ]
+      }
+    ]
+  }
+]

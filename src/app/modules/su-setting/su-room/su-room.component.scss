@@ -1,0 +1,179 @@
+.panel-body {
+  padding: 15px;
+}
+
+.row{
+  margin-bottom: 10px;
+  justify-content: start;
+}
+
+
+.text-box-heading {
+  // background-color: #323248;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  border-radius: 10px;
+}
+
+
+.btn-green {
+  background-color: #57c059;
+  border-color: #57c059;
+  color: #f7f8f9;
+  box-shadow: 0 2px 1px #38a33b;
+}
+
+.btn-red {
+  background-color: #f65b63;
+  border-color: #e03b35;
+  color: #f7f8f9;
+  box-shadow: 0 2px 1px #c6495e;
+}
+
+
+.roomrate-div-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #F5F4D9;
+  color: #323248;
+  border-radius: 5px;
+}
+
+.roomrate-div-inner>.text-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  padding-bottom: 10px;
+  // margin-bottom: 10px;
+}
+
+.roomrate-div-inner>.text-top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding-top: 10px;
+  // margin-bottom: 10px;
+}
+
+span.text-title-price{
+  font-size: 16px;
+}
+
+.col-sm-5ths {
+  width: 20%;
+  float: left;
+}
+
+.room-select-layer {
+  opacity: .7;
+  background-color: #e27032;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 5px;
+  margin: 0 auto;
+  bottom: 0;
+}
+
+.room-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-size: 20px;
+  position: absolute;
+  z-index: 11;
+}
+
+.bg-table {
+  // padding: 30px;
+  // background-color: #323248;
+  border-radius: 20px;
+  margin: 5px 0 25px 0;
+  // opacity: .6;
+}
+
+
+.icon-hide{
+  display: none;
+}
+
+
+i{
+  color: #fff;
+  font-size: 10vw;
+}
+
+i#icon-title{
+  color: #323248;
+  font-size: 4vw;
+}
+
+footer {
+  position: fixed;
+  height: 100px;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+}
+
+
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.table-bordered>tbody>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>td,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+  border: 2px solid #ddd;
+}
+
+
+.table-bordered {
+  border: 2px solid #ddd;
+}
+
+.roomrate-div-inner-empty {
+  width: 100%;
+  height: 13.6vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #F5F4D9;
+  color: #323248;
+  border-radius: 5px;
+}
+
+.roomrate-div-inner-empty>.text-bottom {
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  padding-bottom: 10px;
+}
+
+.roomrate-div-inner-empty>.text-top {
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding-top: 10px;
+}
+
+span.text-red{
+  color: #e03b35;
+}

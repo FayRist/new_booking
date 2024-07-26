@@ -1,0 +1,421 @@
+.panel-body {
+  padding: 15px;
+}
+
+.row{
+  margin-bottom: 10px;
+  justify-content: start;
+}
+
+// .room-div.service {
+//   background-color: #fce6b5;
+// }
+
+
+.text-box-heading {
+  // background-color: #323248;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  border-radius: 10px;
+}
+
+
+.btn-green {
+  background-color: #57c059;
+  border-color: #57c059;
+  color: #f7f8f9;
+  box-shadow: 0 2px 1px #38a33b;
+}
+
+
+.roomrate-div-inner {
+  width: 100%;
+  height: 13.6vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #F5F4D9;
+  color: #323248;
+  border-radius: 5px;
+}
+
+.roomrate-div-inner-empty {
+  width: 100%;
+  height: 13.6vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // background: #323248;
+  // color: #F5F4D9;
+  border-radius: 5px;
+}
+
+.roomrate-div-inner>.text-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+
+span.text-title-price{
+  font-size: 16px;
+}
+
+.col-sm-5ths {
+  width: 14%;
+  float: left;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 20px;
+}
+
+// i{
+//   // color: #fff;
+//   font-size: 5vw;
+// }
+
+.text-box-content>.heading {
+  margin: 20px 0 0 0;
+  background-color: #ccc;
+  padding: 20px;
+  border-radius: 5px 5px 0 0;
+  // padding-left: 20px;
+  // padding-right: 20px;
+}
+
+.text-box-content>.content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0 0 5px 5px;
+}
+
+span{
+  font-size: 16px;
+}
+
+
+.dark-modal .modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+.dark-modal .close {
+  color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.table-bordered>tbody>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>td,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+  border: 2px solid #ddd;
+}
+
+
+.table-bordered {
+  border: 2px solid #ddd;
+}
+
+span.text-red{
+  color: #e03b35;
+}
+
+.text-red{
+  color: #e03b35;
+}
+.text-green{
+  color: #57c059;
+}
+
+
+.box-border{
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.btn-blue {
+  background-color: #314961;
+  border-color: #314961;
+  color: #f7f8f9;
+  box-shadow: 0 2px 1px #253847;
+}
+
+.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+  border: 1;
+}
+
+.btn-check:active+.btn-outline-primary,
+.btn-check:checked+.btn-outline-primary,
+.btn-outline-primary.active,
+.btn-outline-primary.dropdown-toggle.show,
+.btn-outline-primary:active {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  border: 1;
+}
+
+.btn-outline-primary:hover {
+  color: #0d6efd;
+  // background-color: #0d6efd;
+  // border:  1 solid #0d6efd;
+  border: 1;
+  border-color: #0d6efd;
+}
+
+// ------------------------------------------------------------------------------------------------
+
+i.bank{
+  display: inline-block;
+  border-radius:20%;
+  background-color:grey;
+  vertical-align: top;
+  width: 14px;
+  height: 14px;
+  padding: 0.1px;
+  background-repeat: no-repeat;
+  background-size: 75%;
+  background-position: center;
+  background-origin: content-box;
+  overflow:hidden;
+  vertical-align: -0.23em;
+}
+i.bank.round{
+  border-radius: 50%;
+}
+i.bank.shadow{
+  box-shadow: 0px 0px 5px grey;
+}
+i.bank.huge{
+  width: 64px;
+  height: 64px;
+}
+
+h1>i.bank,i.bank.xxxl{
+  // width: 45px;
+  // height: 45px;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  margin: 8px 0px;
+  cursor: pointer;
+}
+
+h2>i.bank,i.bank.width100{
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  margin: 0px 0px;
+  cursor: pointer;
+}
+
+h2>i.bank,i.bank.xxxl{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin: 0px 0px;
+  cursor: pointer;
+}
+
+h2>i.bank,i.bank.xxl{
+  width: 22px;
+  height: 22px;
+}
+h3>i.bank,i.bank.xl{
+  width: 18px;
+  height: 18px;
+}
+h4>i.bank,i.bank.l{
+  width: 16px;
+  height: 16px;
+}
+h5>i.bank,i.bank.s{
+  width: 12px;
+  height: 12px;
+}
+h6>i.bank,i.bank.xs{
+  width: 10px;
+  height: 10px;
+}
+
+i.credit{ /**@AOM / https://github.com/AomDEV/css-finances **/ }
+
+i.bank.bank-bbl{
+  background-color: #1e4598;
+  background-image: url('../../../assets/media/svg/bank/bbl.svg');
+}
+i.bank.bank-kbank{
+  background-color: #138f2d;
+  background-image: url('../../../assets/media/svg/bank/kbank.svg');
+}
+i.bank.bank-rbs{
+  background-color: #032952;
+  background-image: url('../../../assets/media/svg/bank/rbs.svg');
+}
+i.bank.bank-ktb{
+  background-color: #1ba5e1;
+  background-image: url('../../../assets/media/svg/bank/ktb.svg');
+}
+i.bank.bank-jpm{
+  background-color: #321c10;
+  background-image: url('../../../assets/media/svg/bank/jpm.svg');
+}
+i.bank.bank-mufg{
+  background-color: #d61323;
+  background-image: url('../../../assets/media/svg/bank/mufg.svg');
+}
+i.bank.bank-tmb{
+  background-color: #1279be;
+  background-image: url('../../../assets/media/svg/bank/tmb.svg');
+}
+i.bank.bank-scb{
+  background-color: #4e2e7f;
+  background-image: url('../../../assets/media/svg/bank/scb.svg');
+}
+i.bank.bank-citi{
+  background-color: #1583c7;
+  background-image: url('../../../assets/media/svg/bank/citi.svg');
+}
+i.bank.bank-smbc{
+  background-color: #a0d235;
+  background-image: url('../../../assets/media/svg/bank/smbc.svg');
+}
+i.bank.bank-sc{
+  background-color: #0f6ea1;
+  background-image: url('../../../assets/media/svg/bank/sc.svg');
+}
+i.bank.bank-cimb{
+  background-color: #7e2f36;
+  background-image: url('../../../assets/media/svg/bank/cimb.svg');
+}
+i.bank.bank-uob{
+  background-color: #0b3979;
+  background-image: url('../../../assets/media/svg/bank/uob.svg');
+}
+
+i.bank.bank-bay{
+  background-color: #fec43b;
+  background-image: url('../../../assets/media/svg/bank/bay.svg');
+}
+i.bank.bank-mega{
+  background-color: #815e3b;
+  background-image: url('../../../assets/media/svg/bank/mega.svg');
+}
+i.bank.bank-boa{
+  background-color: #e11e3c;
+  background-image: url('../../../assets/media/svg/bank/boa.svg');
+}
+i.bank.bank-cacib{
+  background-color: #0e765b;
+  background-image: url('../../../assets/media/svg/bank/cacib.svg');
+}
+i.bank.bank-gsb{
+  background-color: #eb198d;
+  background-image: url('../../../assets/media/svg/bank/gsb.svg');
+}
+i.bank.bank-hsbc{
+  background-color: #fd0d1b;
+  background-image: url('../../../assets/media/svg/bank/hsbc.svg');
+}
+i.bank.bank-db{
+  background-color: #0522a5;
+  background-image: url('../../../assets/media/svg/bank/db.svg');
+}
+i.bank.bank-ghb{
+  background-color: #f57d23;
+  background-image: url('../../../assets/media/svg/bank/ghb.svg');
+}
+i.bank.bank-baac{
+  background-color: #4b9b1d;
+  background-image: url('../../../assets/media/svg/bank/baac.svg');
+}
+i.bank.bank-mb{
+  background-color: #150b78;
+  background-image: url('../../../assets/media/svg/bank/mb.svg');
+}
+// i.bank.bank-bnp{
+//   background-color: #14925e;
+//   background-image: url('./../../../assets/images/icons/bank/bnp.svg');
+// }
+// i.bank.bank-tbank{
+//   background-color: #fc4f1f;
+//   background-image: url('./../../../assets/images/icons/bank/tbank.svg');
+// }
+i.bank.bank-ibank{
+  background-color: #184615;
+  background-image: url('../../../assets/media/svg/bank/ibank.svg');
+}
+i.bank.bank-tisco{
+  background-color: #12549f;
+  background-image: url('../../../assets/media/svg/bank/tisco.svg');
+}
+i.bank.bank-kk{
+  background-color: #199cc5;
+  background-image: url('../../../assets/media/svg/bank/kk.svg');
+}
+i.bank.bank-icbc{
+  background-color: #c50f1c;
+  background-image: url('../../../assets/media/svg/bank/icbc.svg');
+}
+i.bank.bank-tcrb{
+  background-color: #0a4ab3;
+  background-image: url('../../../assets/media/svg/bank/tcrb.svg');
+}
+i.bank.bank-lhb{
+  background-color: #6d6e71;
+  background-image: url('../../../assets/media/svg/bank/lhb.svg');
+}
+i.bank.bank-ttb{
+  background-color: #ecf0f1;
+  background-image: url('../../../assets/media/svg/bank/ttb.svg');
+}
+i.bank.bank-tmn{
+  background-color: #ecf0f1;
+  background-image: url('../../../assets/media/svg/bank/tmn.svg');
+}
+i.bank.bank-pp{
+  background-color: #00427a;
+  background-image: url('../../../assets/media/svg/bank/tmn.svg');
+}
+
+label.icon-circle{
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  background: #fff;
+  color: #666;
+  text-align: center;
+}
+
+label.icon-circle:hover{
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  // background: #fff;
+  color: #666;
+  text-align: center;
+}

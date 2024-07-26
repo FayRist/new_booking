@@ -1,0 +1,189 @@
+<div class="card-body py-3">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 col-lg-8 card">
+      <div class="text-box-heading clearfix text-center card-head">
+        <img src="https://app.horganice.in.th/images/icon/roomrate-setting-black.png" width="40px"><span> ค่าปรับ</span>
+        <!-- <button class="btn btn-blue btn-pull-right ng-hide" ng-click="changeMode()" ng-hide="selectMode">
+          เลือกหลายห้อง</button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 bar-title">
+    <!---->
+    <div class="text-box-content clearfix"
+      ng-if="apartment.get('billingDate') &amp;&amp; apartment.get('paymentEndDate')">
+      <p><b><u>ข้อมูลที่ใช้ในการคำนวณค่าปรับ</u></b></p>
+      <p>
+      </p>
+      <ul>
+        <li>วันที่ทำบิลค่าเช่า <b>ทุกวันที่ 1 ของเดือน</b></li>
+        <li>วันที่สิ้นสุดการชำระเงิน <b>ทุกวันที่ 5 ของเดือน</b></li>
+      </ul>
+      <p></p>
+      <div class="alert alert-info">
+        <i class="fa fa-info-circle" id="icon-title"></i> ข้อมูลวันที่ทำบิลค่าเช่า และ วันที่สิ้นสุดการชำระเงิน
+        จะมีผลต่อการคำนวณค่าปรับ
+        หากต้องการตั้งค่า
+        <a href="#" ng-click="showRequireDataModal(true)"><u>คลิกที่นี่</u></a>
+      </div>
+    </div>
+    <!---->
+  </div>
+
+  <div class="row d-flex">
+    <div class="col-xs-12 bg-table card" *ngFor="let floor of checkedList;">
+      <div class="card-body">
+        <div class="text-box-content clearfix" style="border-color:#CCCCCC">
+          <div class="d-flex justify-content-between">
+            <h4>
+              โซน {{ floor.floorName }}
+            </h4>
+          </div>
+
+          <div class="content clearfix">
+            <!-- Rooms -->
+            <div class="constant row" *ngIf="floor.listRoom.length !== 0 ">
+
+              <div class="col-md-6 col-sm-5ths mt-5 "
+                *ngFor="let item of floor.listRoom | paginate: { itemsPerPage: mobile, currentPage: p }">
+
+                <div class="roomrate-div-inner " *ngIf="item.listFee.length !== 0"
+                  (click)="openBackDropCustomClass(content, floor.id, item)">
+                  <div class="room-icon"
+                    [ngClass]="item.isSelected === true ? 'room-select-layer room-icon' : 'icon-hide'">
+                    <!-- {{ item.isSelected }} -->
+                    <i class="fas fa-check"></i>
+                  </div>
+
+                  <img class="room-transfer" src="https://app.horganice.in.th/images/apartment_create/set-rent-cost.png"
+                    alt="img room">
+                  <div class="text-top hidden-xs text-center">
+                    <span class="text-title-price">{{ item.roomName }}</span>
+                  </div>
+                  <div class="text-bottom hidden-xs text-center">
+                    <span class="text-title-price">ค่าปรับ {{ item.listFee.length  | number }} รายการ</span>
+                  </div>
+                </div>
+
+                <div class="roomrate-div-inner-empty" *ngIf="item.listFee.length === 0"
+                  (click)="openBackDropCustomClass(content, floor.id, item)">
+                  <div class="room-icon"
+                    [ngClass]="item.isSelected === true ? 'room-select-layer room-icon' : 'icon-hide'">
+                    <!-- {{ item.isSelected }} -->
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <!---->
+                  <div class="text-top hidden-xs text-center">
+                    <span class="text-title-price">{{ item.roomName }}</span>
+                  </div>
+                  <div class="text-middle" style="bottom:30%">
+                    <i class="fa fa-plus fa-2x" id="div-icon-title"></i><br>
+                  </div>
+
+                  <div class="text-bottom hidden-xs text-center">
+                    <span class="text-title-price">ไม่มีรายการค่าปรับ</span>
+                  </div>
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <div class="constant row" *ngIf="floor.listRoom.length === 0 ">
+              <h4 class="text-center pb-5 pt-5">ไม่มีห้องในโซนนี้</h4>
+            </div>
+            <!-- Rooms -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">แก้ไขราคาห้องพัก</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="priceFrom">
+      <div class="row align-items-end">
+        <div class="col-md-6 ">
+          <label for="">รายละเอียดค่าปรับ <span class="text-red">*</span></label>
+          <b>
+            <input type="text" formControlName="remarkFee"
+              class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+              placeholder="รายละเอียดค่าปรับ" required="">
+          </b>
+        </div>
+        <div class="col-md-2 ">
+          <label for="">จำนวน <span class="text-red">*</span></label>
+          <b>
+            <input type="text" formControlName="priceFee"
+              class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder="จำนวน "
+              required="">
+          </b>
+        </div>
+        <div class="col-md-2 ">
+          <label for="">จำนวนเงิน <span class="text-red">*</span></label>
+          <b>
+            <input type="text" formControlName="amountFee"
+              class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+              placeholder="จำนวนเงิน" required="">
+          </b>
+        </div>
+        <div class="col-md-2">
+          <button ng-if="selectMode" (click)="addFee()" type="button" class=" btn btn-green btn-xs">เพิ่ม</button>
+        </div>
+      </div>
+    </form>
+    <form [formGroup]="priceFrom">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th style="width: 10%;">
+              #
+            </th>
+            <th style="width: 50%;">
+              รายการ
+            </th>
+            <th style="width: 15%;">
+              จำนวน
+            </th>
+            <th style="width: 15%;">
+              จำนวนเงิน
+            </th>
+            <th style="width: 10%;">
+              ลบ
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of dataListFee; let i = index">
+            <td>
+              {{ i+1 }}
+            </td>
+            <td>
+              {{ a.remarkFee }}
+            </td>
+            <td>
+              {{ a.amountFee }}
+            </td>
+            <td>
+              {{ a.priceFee }}
+            </td>
+            <td>
+              <button type="button" class=" btn btn-red btn-xxs">
+                <!-- <i class="fa fa-trash" id="delete-asset"></i> -->
+                ลบ
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="addFee()">Save</button>
+  </div>
+</ng-template>

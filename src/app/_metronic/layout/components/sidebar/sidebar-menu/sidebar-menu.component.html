@@ -1,0 +1,92 @@
+<!--begin::Menu wrapper-->
+<div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper hover-scroll-overlay-y my-5" data-kt-scroll="true"
+  data-kt-scroll-activate="true" data-kt-scroll-height="auto"
+  data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
+  data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px" data-kt-scroll-save-state="true">
+  <!--begin::Menu-->
+  <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu" data-kt-menu="true"
+    data-kt-menu-expand="false">
+    <!-- Dashboard -->
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/dashboard" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'" class="svg-icon svg-icon-2"></span>
+        </span>
+        <span class="menu-title" translate="MENU.DASHBOARD"></span></a>
+    </div>
+
+    <!-- Layout builder -->
+    <!-- <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/builder" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/general/gen019.svg'" class="svg-icon svg-icon-2"></span>
+        </span><span class="menu-title">Layout Builder</span></a>
+    </div> -->
+    <!-- Separator -->
+    <div class="menu-item">
+      <div class="menu-content pt-8 pb-2">
+        <span class="menu-section text-muted text-uppercase fs-8 ls-1">เมนูหลัก</span>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/booking" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/general/gen005.svg'" class="svg-icon svg-icon-2"></span>
+        </span>
+        <span class="menu-title">ระบบจองห้อง/บริการ</span>
+      </a>
+    </div>
+
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/accounting/main" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/communication/com014.svg'" class="svg-icon svg-icon-2"></span>
+        </span>
+        <span class="menu-title">ระบบบัญชี</span>
+      </a>
+    </div>
+
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/member" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/communication/com005.svg'" class="svg-icon svg-icon-2"></span>
+        </span>
+        <span class="menu-title">ข้อมูลลูกค้า</span>
+      </a>
+    </div>
+
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/employee" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/communication/com014.svg'" class="svg-icon svg-icon-2"></span>
+        </span>
+        <span class="menu-title">ข้อมูลพนักงาน</span>
+      </a>
+    </div>
+
+
+    <!-- Menu-File Data -->
+    <div class="menu-item">
+      <div class="menu-content pt-8 pb-2">
+        <span class="menu-section text-muted text-uppercase fs-8 ls-1">แฟ้มข้อมูหลัก</span>
+      </div>
+    </div>
+
+    <!-- su_master -->
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/su-master/room" routerLinkActive="active">
+        <span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'" class="svg-icon svg-icon-2">
+          </span>
+        </span>
+        <span class="menu-title">ข้อมูลห้องพัก</span>
+      </a>
+    </div>
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/su-master/service" routerLinkActive="active">
+        <span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/files/fil012.svg'" class="svg-icon svg-icon-2">
+          </span>
+        </span>
+        <span class="menu-title">ข้อมูลบริการ</span>
+      </a>
+    </div>
+  </div>
+  <!--end::Menu-->
+</div>
+<!--end::Menu wrapper-->

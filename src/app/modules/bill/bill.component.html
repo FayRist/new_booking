@@ -1,0 +1,506 @@
+<div class="card mb-2" style="width: 80vw">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3">
+        <a class="btn btn-primary btn-pill"><span class="fas fa-info-circle"></span> คำอธิบายสถานะบิล</a>
+      </div>
+      <div class="col-6 my-2 d-flex justify-content-center">
+        <div>
+          <p class="text-center fs-1">เลือกรอบบิล</p>
+          <div class="form-group">
+            <div class="input-group" [formGroup]="data">
+              <div class="input-group-prepend">
+                <span class="input-group-text p-2">
+                  <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                </span>
+              </div>
+
+              <input matInput formControlName="date" [matDatepicker]="dp" class="form-control"
+                placeholder="เลือกรอบบิล" />
+
+              <mat-datepicker #dp startView="multi-year" panelClass="example-month-picker">
+              </mat-datepicker>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 d-flex justify-content-end">
+        <div>
+          <a class="btn btn-secondary"><span class="far fa-calendar-alt"></span> ตั้งค่าบิล</a>
+        </div>
+      </div>
+      <div class="col-12"></div>
+      <div class="col-12 d-flex justify-content-center"></div>
+    </div>
+  </div>
+</div>
+<div class="card my-5" style="width: 80vw">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <p class="text-center">
+          <i class="far fa-file-alt fs-1 text-dark"> </i>
+          <span class="fs-1 text-dark">
+            {{ data.controls.date.value | thaidate : "shortT" }}</span>
+        </p>
+      </div>
+      <div class="col-6 my-2">
+        <div class="form-group">
+          <div class="input-group ">
+            <div class="input-group-prepend">
+              <span class="input-group-text p-5"><i class="far fa-hand-point-right text-dark"> </i></span>
+            </div>
+            <select class="form-control">
+              <option value="all">บิลทั้งหมด</option>
+              <option value="paidsuccess">บิลชำระเงินแล้ว</option>
+              <option value="waitpaid">บิลค้างชำระเงิน</option>
+              <option value="watched">บิลที่ผู้เช่าดูแล้ว</option>
+              <option value="notwatch">บิลที่ผู้เช่ายังไม่ได้ดู</option>
+            </select>
+            <!-- <input type="text" class="form-control" placeholder="บิลทั้งหมด" /> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-6 my-2">
+        <div class="form-group">
+          <div class="input-group ">
+            <div class="input-group-prepend">
+              <span class="input-group-text p-5"><i class="fas fa-search text-dark"> </i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="ค้นหาตามหมดเลขห้อง" />
+          </div>
+        </div>
+      </div>
+      <div class="col-6 my-2">
+        <div class="form-group">
+          <div class="input-group ">
+            <div class="input-group-prepend">
+              <span class="input-group-text p-5"><i class="fas fa-search text-dark"> </i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="ค้นหาตามเลขที่ใบแจ้งหนี้/ใบเสร็จรับเงิน" />
+          </div>
+        </div>
+      </div>
+      <div class="col-6 my-2">
+        <div class="form-group">
+          <div class="input-group ">
+            <div class="input-group-prepend">
+              <span class="input-group-text p-5"><i class="far fa-file-alt text-dark"> </i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="ค้นหาตามยอดเงินรวม" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mb-2" style="width: 80vw">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">
+
+        <a class="btn btn-info btn-pill mx-2 dropdown-toggle"><span class="fas fa-print"></span>
+          พิมพ์หลายห้อง</a>
+        <a class="btn btn-info btn-pill mx-2 dropdown-toggle"><span class="fas fa-print"></span>
+          พิมพ์ใบสรุปบิล</a>
+        <a class="btn btn-success btn-pill mx-2 dropdown-toggle"><span class="far fa-file-excel"></span>
+          ดาวน์โหลด Excel</a>
+      </div>
+      <div class="col-3 d-flex justify-content-end">
+      </div>
+      <div class="col-3 d-flex justify-content-end">
+        <div>
+          <a class="btn btn-primary"><span class="far fa-paper-plane"></span> ส่งบิล</a>
+        </div>
+      </div>
+      <div class="col-12"></div>
+      <div class="col-12 d-flex justify-content-center"></div>
+    </div>
+  </div>
+</div>
+
+<div class="row d-flex" *ngIf="allBillTrue.length !== 0 ">
+  <div class="text-box-content clearfix">
+    <!-- Services -->
+    <div class="heading clearfix">
+      <h2>จ่ายเงินแล้ว</h2>
+    </div>
+    <div class="content clearfix ">
+      <div class="col-xs-6 col-sm-5ths text-center" *ngFor="let allBill of allBillTrue" style="cursor:pointer">
+        <div class="roomrate-div-inner " (click)="openBackDropDetail(contentDetail, allBill)">
+
+          <!-- <img class="room-transfer" src="https://app.horganice.in.th/images/service/service.png" alt="img room"> -->
+          <div class="text-bottom hidden-xs text-center">
+            <p>
+              ชื่อ : {{ allBill.bookingFullName }} <br>
+              ห้อง : {{ allBill.bookingRoom }} <br>
+              สถานะ :
+              <ng-container *ngIf="allBill.paid">จ่ายแล้ว</ng-container>
+              <ng-container *ngIf="!allBill.paid">ยังไม่ได้ชำระเงิน</ng-container>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row d-flex" *ngIf="allBillFalse.length !== 0">
+  <div class="text-box-content clearfix">
+    <!-- Services -->
+    <div class="heading clearfix">
+      <h2>ยังไม่ได้จ่ายเงิน</h2>
+    </div>
+    <div class="content clearfix ">
+
+      <div class="col-xs-6 col-sm-5ths text-center" *ngFor="let allBill of allBillFalse" style="cursor:pointer">
+        <div class="roomrate-div-inner " (click)="openBackDropDetail(contentDetail, allBill)">
+
+          <!-- <img class="room-transfer" src="https://app.horganice.in.th/images/service/service.png" alt="img room"> -->
+          <div class="text-bottom hidden-xs text-center">
+            <p>
+              ชื่อ : {{ allBill.bookingFullName }}<br>
+              ห้อง : {{ allBill.bookingRoom }}<br>
+              มัดจำ : {{ allBill.bookingDeposit }}<br>
+              ราคา : {{ allBill.bookingPrice }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #contentDetail let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">รายละเอียดบิล</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <h5>รายละเอียดผู้เข้าพัก</h5>
+    <div class="row">
+      <div class="col-6">
+        <div class="box-border">
+          <p>
+            ชื่อ: {{ this.billDetail.bookingFullName }}
+            <br>
+            ห้อง: {{ this.billDetail.bookingRoom }}
+            <br>
+            จำนวนคน: {{ this.billDetail.bookingAmountPeple }}
+            <br>
+            มัดจำ: {{ this.billDetail.bookingDeposit | number }}
+            <br>
+            วันที่ Check In: {{ this.dayCheckIn | thaidate : "small" }}
+            <br>
+            วันที่ Check Out: {{ this.dayCheckOut | thaidate : "small" }}
+            <br>
+          </p>
+
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="box-border">
+          <p>สถานะบิล:
+            <i class="fa fa-circle" style="margin: 0 10px;"
+              [ngClass]="this.billDetail.paid === true ? 'text-green' : 'text-red'"></i>
+            <ng-container *ngIf="this.billDetail.paid">จ่ายแล้ว</ng-container>
+            <ng-container *ngIf="!this.billDetail.paid">ยังไม่ได้ชำระเงิน</ng-container>
+          </p>
+        </div>
+        <div class="box-border" *ngIf="this.billDetail.paid">
+          <p>วันที่รับชำระเงิน: {{ this.datePaid | thaidate : "small"  }} </p>
+        </div>
+        <div class="box-border" *ngIf="this.billDetail.paid">
+          <p>ช่องทางการชำระเงิน: {{this.billDetail.paidType }} </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="width: 70%; padding-left: 0.75rem;" class="text-center">
+                <strong>รายการ</strong>
+              </th>
+              <th class="text-center">
+                <strong>จำนวน</strong>
+              </th>
+              <th class="text-center">
+                <strong>จำนวนเงิน(บาท)</strong>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 70%; padding-left: 0.75rem;">
+                ค่าห้องพัก
+              </td>
+              <td></td>
+              <td>
+                {{ priceRoom | number }}
+              </td>
+            </tr>
+            <tr *ngIf="allService.length !== 0">
+              <strong>บริการ</strong>
+            </tr>
+            <tr *ngFor="let listService of allService; let i = index;">
+              <td style="width: 70%; padding-left: 0.75rem;">
+                {{ listService.serviceName }}
+              </td>
+              <td>
+                {{ listService.serviceAmount | number}}
+              </td>
+              <td>
+                {{ listService.servicePrice | number}}
+              </td>
+            </tr>
+            <tr *ngIf="allFood.length !== 0">
+              <strong>อาหาร</strong>
+            </tr>
+            <tr *ngFor="let listService of allFood; let i = index;">
+              <td style="width: 70%; padding-left: 0.75rem;">
+                {{ listService.serviceName }}
+              </td>
+              <td>
+                {{ listService.serviceAmount | number}}
+              </td>
+              <td>
+                {{ listService.servicePrice | number}}
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 70%; padding-left: 0.75rem;">
+                <strong>รวม</strong>
+              </td>
+              <td>
+                <strong>{{ allAmount | number}}</strong>
+              </td>
+              <td>
+                <strong>{{ allTotal | number }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6" style="display: flex; justify-content: start;">
+        <button class="btn btn-secondary" type="button" (click)="printBill()">
+          <span class="fas fa-print"></span>
+          พิมพ์
+        </button>
+      </div>
+      <div class="col-6" style="display: flex; justify-content: end;">
+        <div class="btn-group" class="me-5">
+          <button class="btn btn-success btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" *ngIf="!this.billDetail.paid">
+            <i class="fa fa-usd"></i>
+            จ่ายเงิน
+          </button>
+          <ul class="dropdown-menu">
+            <li><button class="dropdown-item" type="button"
+                (click)="updateStatusPaid('paidRoom', contentConfirm)">จ่ายค่าห้อง</button></li>
+            <li><button class="dropdown-item" type="button"
+                (click)="updateStatusPaid('paidFood', contentConfirm)">จ่ายค่าอาหาร</button>
+            </li>
+          </ul>
+        </div>
+
+        <button type="button" class="btn btn-danger" *ngIf="this.billDetail.paid"
+          (click)="updateStatusPaid('cancel', contentConfirm)">ยกเลิกการชำระเงิน</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">ปิดหน้าต่าง</button>
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="cancel()">ตกลง</button> -->
+  </div>
+</ng-template>
+
+<ng-template #contentConfirm let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">ยอดชำระเงินทั้งหมด {{ allTotal | number }} บาท</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row mb-5">
+      <div class="col-12" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <p>วิธีการชำระ</p>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="1" (change)="changeTypePaid('1')"
+            autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio1">เงินสด</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="2" (change)="changeTypePaid('2')"
+            autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2">โอนเงิน</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" value="3" (change)="changeTypePaid('3')"
+            autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio3">บัตรเครดิต/เดบิต</label>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center flex-column" *ngIf="radioType === '1' || radioType === '3'  ">
+      <form [formGroup]="formBill1" class="d-flex align-items-center flex-column">
+        <div class="col-5">
+          <p>วันที่รับชำระเงิน *</p>
+        </div>
+        <div class="col-5">
+          <div id="timepicker_booking_end">
+            <div class="w-100 d-inline-flex">
+              <input [owlDateTime]="picker1" class="form-control" placeholder="วันที่รับชำระเงิน"
+                formControlName="date" />
+              <owl-date-time #picker1></owl-date-time>
+              <mat-datepicker-toggle matIconSuffix [owlDateTimeTrigger]="picker1"></mat-datepicker-toggle>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+    <div class="row align-items-center flex-column" *ngIf="radioType === '2'">
+      <form [formGroup]="formBill2" class="d-flex align-items-center flex-column">
+        <!-- <div class="col-12" style="display: flex; align-items: center; flex-direction: column;">
+          <label>วันที่รับชำระเงิน *</label>
+        </div> -->
+        <div class="col-5">
+          <label>วันที่รับชำระเงิน *</label>
+          <div id="timepicker_booking_end">
+            <div class="w-100 d-inline-flex">
+              <input [owlDateTime]="picker1" class="form-control" placeholder="วันที่รับชำระเงิน"
+                formControlName="date" />
+              <owl-date-time #picker1></owl-date-time>
+              <mat-datepicker-toggle matIconSuffix [owlDateTimeTrigger]="picker1"></mat-datepicker-toggle>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-5 mt-5">
+          <label>เข้าบัญชีธนาคาร *</label>
+          <select class="form-control" formControlName="bankaccount">
+            <option value="" disabled selected>เลือกบัญชี</option>
+            <option *ngFor="let bank of itemsBank" [value]="bank.bankAccountNumber">
+              <div class="row">
+                <!-- <div class="col-2">
+                  <i class="bank width100" [ngClass]="{
+                      'bank-kbank':bank.bankCode === 'KBANK',
+                      'bank-scb':bank.bankCode === 'SCB',
+                      'bank-bbl':bank.bankCode === 'BBL',
+                      'bank-ktb':bank.bankCode === 'KTB',
+                      'bank-rbs':bank.bankCode === 'RBS',
+                      'bank-jpm':bank.bankCode === 'JPM',
+                      'bank-mufg':bank.bankCode === 'MUFG',
+                      'bank-tmb':bank.bankCode === 'TMB',
+                      'bank-citi':bank.bankCode === 'CITI',
+                      'bank-smbc':bank.bankCode === 'SMSB',
+                      'bank-sc':bank.bankCode === 'SC',
+                      'bank-cimb':bank.bankCode === 'CIMB',
+                      'bank-uob':bank.bankCode === 'UOB',
+                      'bank-bay':bank.bankCode === 'BAY',
+                      'bank-mega':bank.bankCode === 'MEGA',
+                      'bank-boa':bank.bankCode === 'BOA',
+                      'bank-cacib':bank.bankCode === 'CACIB',
+                      'bank-gsb':bank.bankCode === 'GSB',
+                      'bank-db':bank.bankCode === 'DB',
+                      'bank-ghb':bank.bankCode === 'GHB',
+                      'bank-bacc':bank.bankCode === 'BACC',
+                      'bank-ibank':bank.bankCode === 'IBANK',
+                      'bank-tisco':bank.bankCode === 'TISCO',
+                      'bank-kk':bank.bankCode === 'KK',
+                      'bank-icbc':bank.bankCode === 'ICBC',
+                      'bank-tcrb':bank.bankCode === 'TCRB',
+                      'bank-lhb':bank.bankCode === 'LHB',
+                      'bank-ttb':bank.bankCode === 'TTB',
+                      'bank-tmn':bank.bankCode === 'TMN',
+                      'bank-pp':bank.bankCode === 'PP'}"></i>
+                </div> -->
+                <div class="col-8">
+                  <ng-container *ngIf="bank.bankCode === 'PP'">พร้อมเพย์</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'KBANK'">ธนาคารกสิกรไทย</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'KTB'">ธนาคารกรุงไทย</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'BBL'">ธนาคารกรุงเทพ</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'GSB'">ธนาคารออมสิน</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'SCB'">ธนาคารไทยพาณิชย์</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'TTB'">ทหารไทยธนชาต</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'KK'">ธนาคารเกียรตินาคิน</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'BAAC'">ธนาคารธกส</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'CIMB'">ธนาคารซีไอเอ็มบีไทย</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'TMB'">ธนาคารทหารไทย</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'NBANK'">ธนาคารธนชาติ</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'GHB'">อาคารสงเคราะห์</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'TCRB'">ไทยเครดิต</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'HSBC'">ฮ่องกงและเซี่ยงไฮ้</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'CITI'">ซิตี้แบงก์</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'UOB'">ยูโอบี</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'TISCO'">ทิสโก้</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'LHB'">แลนด์แอนด์เฮ้าส์</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'ICBC'">ไอซีบีซี</ng-container>
+                  <ng-container *ngIf="bank.bankCode === 'SMBC'">สแตนดาร์ดชาร์เตอร์ด</ng-container>
+                  (เลขที่บัญชี: {{ bank.bankAccountNumber }})
+                </div>
+              </div>
+
+            </option>
+          </select>
+        </div>
+        <div class="col-5 mt-5 d-flex flex-column">
+          <label>เข้าบัญชีธนาคาร *</label>
+          <div class="image-input image-input-empty image-input-outline" style="width: 120px;height: 120px;
+          background-image: url({{image}}) ">
+            <div class="image-input-wrapper"></div>
+
+            <label class="icon-circle" data-action="change" data-toggle="tooltip" title=""
+              data-original-title="Change avatar">
+              <i class="fa fa-pen icon-sm text-muted"></i>
+              <!-- <input #file type="file" accept='image/*' (change)="preview(file.files)" hidden/> -->
+
+              <input type="file" name="profile_avatar" (change)="selectFile($event)" accept=".png, .jpg, .jpeg">
+              <!-- <input type="hidden" name="profile_avatar_remove"> -->
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">ปิดหน้าต่าง</button>
+    <button type="button" class="btn btn-outline-dark" (click)="paid()">ตกลง</button>
+  </div>
+</ng-template>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-8" id="htmlData">
+      <table class="table table-bordered">
+        <tr class="table-primary">
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+        <tr *ngFor="let user of USERS">
+          <th>{{user.id}}</th>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.phone}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+    </div>
+  </div>
+</div> -->
+
+<div class="col-md-4 text-right">
+  <button class="btn btn-success btn-block" (click)="makePdf()">Download generatePDF</button>
+</div>

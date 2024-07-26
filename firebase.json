@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "site": "rabbit-hotel",
+      "public": "dist/demo1",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

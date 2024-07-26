@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "serviceName": "เพิ่มเตียงเสริม",
+    "reserve": true,
+    "servicePrice": 350,
+    "serviceAmount": 16
+  },
+  {
+    "id": 2,
+    "serviceName": "อุปกรณ์ปิ้งย่าง(5คน)",
+    "reserve": true,
+    "servicePrice": 300,
+    "serviceAmount": 1
+  },
+  {
+    "id": 3,
+    "serviceName": "อุปกรณ์ปิ้งย่าง( 6-10 คน)",
+    "reserve": true,
+    "servicePrice": 500,
+    "serviceAmount": 2
+  },
+  {
+    "id": 4,
+    "serviceName": "ชุดหมูกะทะ",
+    "reserve": true,
+    "servicePrice": 400,
+    "serviceAmount": 5
+  },
+  {
+    "id": 4,
+    "serviceName": "เพิ่มอาหารเช้า",
+    "reserve": true,
+    "servicePrice": 120,
+    "serviceAmount": null
+  },
+  {
+    "id": 404,
+    "serviceName": "Ex. เตาปิ้ง",
+    "servicePrice": 150,
+    "serviceAmount": 2
+  }
+]

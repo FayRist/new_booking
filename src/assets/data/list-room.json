@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "resource": "8pfJrN8ufm2Pk8qPf5Og",
+    "start": "2022-12-03",
+    "end": "2022-12-07",
+    "text": "Event 1"
+  },
+  {
+    "id": "2",
+    "resource": "8pfJrN8ufm2Pk8qPf5Og",
+    "start": "2022-12-08",
+    "end": "2022-12-15",
+    "text": "Event 2"
+  },
+  {
+    "id": "3",
+    "resource": "kedpteW1kPgd7HeN2pWW",
+    "start": "2022-12-25",
+    "end": "2022-12-30",
+    "text": "Event 3"
+  }
+]

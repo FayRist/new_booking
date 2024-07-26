@@ -1,0 +1,144 @@
+.fullscreen {
+  position: absolute;
+  top: 30%;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 90%;
+}
+
+h2 {
+  padding-left: 5px;
+  margin: 0;
+}
+
+input[type='checkbox'] {
+  vertical-align: middle;
+  width: 50px;
+  position: relative;
+  bottom: 1px;
+}
+
+.main-header {
+  white-space: nowrap;
+  display: block;
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.main-body {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 30px;
+  bottom: 0px;
+  height: 80%;
+  overflow: hidden;
+}
+
+.main-bottom {
+  border-top: 1px solid #ccc;
+}
+
+.row-menu {
+  margin-top: 2px;
+  white-space: nowrap;
+  // display: block;
+  align-items: flex-end;
+  justify-content: space-between;
+
+}
+
+.row {
+  margin-top: 2px;
+  white-space: nowrap;
+  // display: block;
+  // align-items: flex-end;
+  justify-content: space-between;
+
+}
+
+.row-btn {
+  margin-top: 2px;
+  white-space: nowrap;
+  // display: block;
+  // align-items: flex-end;
+  justify-content: end;
+
+}
+
+
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.table-bordered>tbody>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>td,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+  border: 2px solid #ddd;
+}
+
+
+.table-bordered {
+  border: 2px solid #ddd;
+}
+
+i {
+  color: #f7f8f9;
+}
+
+.btn-green {
+  background-color: #57c059;
+  border-color: #57c059;
+  color: #f7f8f9;
+  box-shadow: 0 2px 1px #38a33b;
+}
+
+.btn-red {
+  background-color: #f65b63;
+  border-color: #e03b35;
+  color: #f7f8f9;
+  box-shadow: 0 2px 1px #c6495e;
+}
+
+.btn.btn-xxs {
+  width: 50px;
+  height: auto;
+  font-size: 10px;
+}
+
+span.text-red{
+  color: #e03b35;
+}
+
+.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+  border: 1;
+}
+
+.btn-check:active+.btn-outline-primary,
+.btn-check:checked+.btn-outline-primary,
+.btn-outline-primary.active,
+.btn-outline-primary.dropdown-toggle.show,
+.btn-outline-primary:active {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  border: 1;
+}
+
+.btn-outline-primary:hover {
+  color: #0d6efd;
+  // background-color: #0d6efd;
+  // border:  1 solid #0d6efd;
+  border: 1;
+  border-color: #0d6efd;
+}
+

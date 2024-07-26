@@ -1,0 +1,198 @@
+<div class="card-body py-3">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 col-lg-8 card">
+      <div class="text-box-heading clearfix d-flex card-head">
+        <div class="col-md-9 offset-1 text-center">
+          <img src="https://app.horganice.in.th/images/icon/bank-account.png" width="40px"><span>
+            บัญชีธนาคาร</span>
+        </div>
+        <div class="col-md-2 d-flex justify-content-end">
+          <button class="btn btn-primary" (click)="openAddBank(content, null, 'create')">
+            เพิ่มบัญชี
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 col-lg-8 bg-table card" *ngFor="let item of banklist">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <i class="bank width100" [ngClass]="{
+              'bank-kbank':item.bankCode === 'KBANK',
+              'bank-scb':item.bankCode === 'SCB',
+              'bank-bbl':item.bankCode === 'BBL',
+              'bank-ktb':item.bankCode === 'KTB',
+              'bank-rbs':item.bankCode === 'RBS',
+              'bank-jpm':item.bankCode === 'JPM',
+              'bank-mufg':item.bankCode === 'MUFG',
+              'bank-tmb':item.bankCode === 'TMB',
+              'bank-citi':item.bankCode === 'CITI',
+              'bank-smbc':item.bankCode === 'SMSB',
+              'bank-sc':item.bankCode === 'SC',
+              'bank-cimb':item.bankCode === 'CIMB',
+              'bank-uob':item.bankCode === 'UOB',
+              'bank-bay':item.bankCode === 'BAY',
+              'bank-mega':item.bankCode === 'MEGA',
+              'bank-boa':item.bankCode === 'BOA',
+              'bank-cacib':item.bankCode === 'CACIB',
+              'bank-gsb':item.bankCode === 'GSB',
+              'bank-db':item.bankCode === 'DB',
+              'bank-ghb':item.bankCode === 'GHB',
+              'bank-bacc':item.bankCode === 'BACC',
+              'bank-ibank':item.bankCode === 'IBANK',
+              'bank-tisco':item.bankCode === 'TISCO',
+              'bank-kk':item.bankCode === 'KK',
+              'bank-icbc':item.bankCode === 'ICBC',
+              'bank-tcrb':item.bankCode === 'TCRB',
+              'bank-lhb':item.bankCode === 'LHB',
+              'bank-ttb':item.bankCode === 'TTB',
+              'bank-tmn':item.bankCode === 'TMN',
+              'bank-pp':item.bankCode === 'PP'}"></i>
+          </div>
+          <div class="col-6 d-flex flex-column justify-content-center">
+            <h3>ธนาคาร :
+              <ng-container *ngIf="item.bankCode === 'PP'">พร้อมเพย์</ng-container>
+              <ng-container *ngIf="item.bankCode === 'KBANK'">ธนาคารกสิกรไทย</ng-container>
+              <ng-container *ngIf="item.bankCode === 'KTB'">ธนาคารกรุงไทย</ng-container>
+              <ng-container *ngIf="item.bankCode === 'BBL'">ธนาคารกรุงเทพ</ng-container>
+              <ng-container *ngIf="item.bankCode === 'GSB'">ธนาคารออมสิน</ng-container>
+              <ng-container *ngIf="item.bankCode === 'SCB'">ธนาคารไทยพาณิชย์</ng-container>
+              <ng-container *ngIf="item.bankCode === 'TTB'">ทหารไทยธนชาต</ng-container>
+              <ng-container *ngIf="item.bankCode === 'KK'">ธนาคารเกียรตินาคิน</ng-container>
+              <ng-container *ngIf="item.bankCode === 'BAAC'">ธนาคารธกส</ng-container>
+              <ng-container *ngIf="item.bankCode === 'CIMB'">ธนาคารซีไอเอ็มบีไทย</ng-container>
+              <ng-container *ngIf="item.bankCode === 'TMB'">ธนาคารทหารไทย</ng-container>
+              <ng-container *ngIf="item.bankCode === 'NBANK'">ธนาคารธนชาติ</ng-container>
+              <ng-container *ngIf="item.bankCode === 'GHB'">อาคารสงเคราะห์</ng-container>
+              <ng-container *ngIf="item.bankCode === 'TCRB'">ไทยเครดิต</ng-container>
+              <ng-container *ngIf="item.bankCode === 'HSBC'">ฮ่องกงและเซี่ยงไฮ้</ng-container>
+              <ng-container *ngIf="item.bankCode === 'CITI'">ซิตี้แบงก์</ng-container>
+              <ng-container *ngIf="item.bankCode === 'UOB'">ยูโอบี</ng-container>
+              <ng-container *ngIf="item.bankCode === 'TISCO'">ทิสโก้</ng-container>
+              <ng-container *ngIf="item.bankCode === 'LHB'">แลนด์แอนด์เฮ้าส์</ng-container>
+              <ng-container *ngIf="item.bankCode === 'ICBC'">ไอซีบีซี</ng-container>
+              <ng-container *ngIf="item.bankCode === 'SMBC'">สแตนดาร์ดชาร์เตอร์ด</ng-container>
+            </h3>
+            <h3>สาขา : {{ item.bankBranch }}</h3>
+            <h3>ชื่อบัญชี : {{item.bankAccountNameF}} &nbsp;{{ item.bankAccountNameL }} </h3>
+            <h3>เลขที่บัญชี : {{ item.bankAccountNumber }} </h3>
+          </div>
+        </div>
+        <div class="row" style="display: flex; justify-content: right;">
+          <div class="col-md-4" style="display: flex; justify-content: right;">
+            <button class="btn btn-red" (click)="openDeleteBank(contentDelete, item.id)">
+              ลบ
+            </button>
+            <button class="btn btn-primary" (click)="openAddBank(content, item, 'edit')">
+              แก้ไขบัญชี
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <ng-template #contentDelete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">ยืนยันการลบข้อมูล</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="">
+          <h3>ต้องการลบข้อมูลหรือไม่</h3>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">ยกเลิก</button>
+      <button type="button" class="btn btn-outline-dark" (click)="deleteBank()">ยืนยัน</button>
+    </div>
+  </ng-template>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">เพิ่มบัญชี</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="addbankFrom">
+        <div class="row">
+          <label for="">เลือกบัญชีธนาคาร <span class="text-red">*</span></label>
+          <div class="col-md-10 offset-1 mb-5">
+            <b>
+              <select class="form-control ng-empty ng-dirty ng-valid-parse ng-invalid ng-invalid-required ng-touched"
+                formControlName="bankCode" required="">
+                <option value="" disabled="" selected="selected">บัญชีธนาคาร</option>
+                <option value="PP">พร้อมเพย์</option>
+                <option value="KBANK">ธนาคารกสิกรไทย</option>
+                <option value="KTB">ธนาคารกรุงไทย</option>
+                <option value="BBL">ธนาคารกรุงเทพ</option>
+                <option value="GSB">ธนาคารออมสิน</option>
+                <option value="SCB">ธนาคารไทยพาณิชย์</option>
+                <option value="TTB">ทหารไทยธนชาต</option>
+                <option value="KK">ธนาคารเกียรตินาคิน</option>
+                <option value="BAAC">ธนาคารธกส.</option>
+                <option value="CIMB">ธนาคารซีไอเอ็มบีไทย</option>
+                <option value="TMB">ธนาคารทหารไทย</option>
+                <option value="NBANK">ธนาคารธนชาติ</option>
+                <option value="GHB">อาคารสงเคราะห์</option>
+                <option value="TCRB">ไทยเครดิต</option>
+                <option value="HSBC">ฮ่องกงและเซี่ยงไฮ้</option>
+                <option value="CITI">ซิตี้แบงก์</option>
+                <option value="UOB">ยูโอบี</option>
+                <option value="TISCO">ทิสโก้</option>
+                <option value="LHB">แลนด์แอนด์เฮ้าส์</option>
+                <option value="ICBC">ไอซีบีซี</option>
+                <option value="IBANK">อิสลาม</option>
+                <option value="SMBC">สแตนดาร์ดชาร์เตอร์ด</option>
+              </select>
+              <!-- <input type="text" formControlName="bankCode"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+                required=""> -->
+            </b>
+          </div>
+          <label for="">สาขา <span class="text-red">*</span></label>
+          <div class="col-md-10 offset-1 mb-5">
+            <b>
+              <input type="text" formControlName="bankBranch"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+                placeholder="ชื่อสาขา" required="">
+            </b>
+          </div>
+          <label for="">ชื่อบัญชี <span class="text-red">*</span></label>
+          <div class="col-md-5 offset-1 mb-5">
+            <b>
+              <input type="text" formControlName="bankAccountNameF"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder="ชื่อ"
+                required="">
+            </b>
+          </div>
+          <div class="col-md-5  mb-5">
+            <b>
+              <input type="text" formControlName="bankAccountNameL"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+                placeholder="นามสกุล" required="">
+            </b>
+          </div>
+          <label for="">เลขที่บัญชี <span class="text-red">*</span></label>
+          <div class="col-md-10 offset-1 mb-5">
+            <b>
+              <input type="text" formControlName="bankAccountNumber"
+                class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required"
+                placeholder="เลขที่บัญชี" required="">
+            </b>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="button" class="btn btn-outline-dark" (click)="addBank()">Save</button>
+    </div>
+  </ng-template>

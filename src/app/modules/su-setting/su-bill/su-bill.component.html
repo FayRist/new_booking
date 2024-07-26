@@ -1,0 +1,102 @@
+<div class="card-body py-3">
+  <div class="row d-flex">
+    <div class="col text-center">
+      <h1>รายละเอียดหัวบิล</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <form [formGroup]="bill">
+      <div class="row">
+        <div class="col-8 col-md-8" style="padding-bottom:15px">
+          <label>ประเภทธุรกิจ <span class="text-red">*</span></label>
+          <select name="typeBiz" class="form-control ng-pristine ng-valid ng-not-empty ng-touched"
+            formControlName="typeBiz">
+            <option value="" disabled="">โปรดลือก</option>
+            <option value="freelance" selected="selected">บุคคลธรรมดา</option>
+            <option value="company_vat">บริษัท/หจก - จดภาษีมูลค่าเพิ่มแล้ว</option>
+            <option value="company_novat">บริษัท/หจก - ยังไม่เข้าระบบภาษีมูลค่าเพิ่ม</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 form-div">
+          <label for="">ชื่อโรงแรม <span class="text-red">*</span></label>
+          <b>
+            <input name="apartmentName" formControlName="apartmentName" type="text"
+              class="form-control ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" placeholder=""
+              required="">
+          </b>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8" style="margin-bottom:5px">
+          <label>ที่อยู่</label>
+          <textarea class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" rows="3"
+            placeholder="รายละเอียดที่อยู่" formControlName="address"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 form-div" ng-class="{'has-error':formApartment.tax_id.$invalid}">
+          <label>เลขประจำตัวผู้เสียภาษี</label>
+          <input type="text" name="taxId" formControlName="taxId"
+            class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" maxlength="13"
+            placeholder="">
+          <span class="text-red ng-hide" ng-show="formApartment.tax_id.$error.maxlength">
+            <span>* กรุณากรอกเลขบัตรประชาชนให้ถูกต้องโดยเลขต้องไม่เกิน 13 หลักและไม่มีเครื่องหมายขีดหรือเว้นวรรค
+              ตัวอย่างเช่น. 1589966547112</span>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4" style="margin-bottom:5px">
+          <label>เบอร์โทร</label>
+          <input type="text" name="phonenumber" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+            placeholder="เบอร์โทร" formControlName="phonenumber">
+        </div>
+        <div class="col-4" style="margin-bottom:5px">
+          <label>อีเมล</label>
+          <input type="text" name="mail" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+            placeholder="อีเมล" formControlName="mail">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9 d-flex justify-content-center">
+          <div class="image-input image-input-empty image-input-outline" style="width: 120px;height: 120px;
+            background-image: url({{image}}) ">
+            <div class="image-input-wrapper"></div>
+
+            <label class="icon-circle"
+              data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+              <i class="fa fa-pen icon-sm text-muted"></i>
+              <!-- <input #file type="file" accept='image/*' (change)="preview(file.files)" hidden/> -->
+
+              <input type="file" name="profile_avatar" (change)="selectFile($event)" accept=".png, .jpg, .jpeg">
+              <!-- <input type="hidden" name="profile_avatar_remove"> -->
+            </label>
+          </div>
+        </div>
+        <!-- <div class="col-4 form-div">
+          <label for="exampleInputFile">
+            โลโก้โรงแรม/บริษัท
+          </label>
+          <div class="logo-box"
+            style="margin-bottom:5px;max-width: 355px;max-height: 175px;border: 2px solid #cec4c4;border-radius: 5px;height: 170px;width: 350px;">
+          </div>
+          <input type="file" accept="image/*" id="logoInputFile">
+          <p class="help-block">รูปภาพขนาดโลโก้ : 1400 * 300 (px)</p>
+        </div> -->
+      </div>
+    </form>
+  </div>
+
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-4 text-center">
+        <button (click)="onSubmit()" type="button" class="btn btn-success w-50">บันทึก</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
